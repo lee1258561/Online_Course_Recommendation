@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron profile">
+            <h1>View</h1>
+        </div>
+        <ol>
+            {% for (first, second) in data.items() %}
+            <blockquote>
+                <li>
+                    {{ escape(first) }}
+                    <ol>
+                        {% for x in second %}
+                        <li>
+                            {{ escape(x[0]) }}
+                            <ul>
+                                {% for y in x[1] %}
+                                <li><a class="url" href="{{ escape(y) }}" target="_blank">{{ escape(y) }}</a></li>
+                                {% end %}
+                            </ul>
+                        </li>
+                        {% end %}
+                    </ol>
+                </li>
+            </blockquote>
+            {% end %}
+        </ol>
+    </div>
+{% end %}
